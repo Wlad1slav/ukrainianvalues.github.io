@@ -1,0 +1,115 @@
+<head>
+<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Roboto:400,700" rel="stylesheet">
+<link href='style.css' rel='stylesheet' type='text/css'>
+<title>8values Quiz</title>
+<link rel="icon" type="x-icon" href="icon.png">
+<link rel="shortcut icon" type="x-icon" href="icon.png">
+<meta charset="utf-8">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-6511426299019766",
+    enable_page_level_ads: true
+  });
+</script>
+</head>
+<body>
+<script type="application/javascript"
+        src="questions.js">
+</script>
+<h1>8values</h1>
+<hr>
+<h2 style="text-align:center;" id="question-number">Loading...</h2>
+<p class="question" id="question-text"></p>
+<button class="button stronglyAgree" onclick="next_question( 1.0)">Strongly Agree</button> <br>
+<button class="button agree" onclick="next_question( 0.5)">Agree</button> <br>
+<button class="button neutral" onclick="next_question( 0.0)">Neutral/Unsure</button> <br>
+<button class="button disagree" onclick="next_question(-0.5)">Disagree</button> <br>
+<button class="button stronglyDisagree" onclick="next_question(-1.0)">Strongly Disagree</button> <br>
+<button class="small_button" onclick="prev_question()" id="back_button">Back</button>
+<button class="small_button_off" id="back_button_off">Back</button><br>
+
+<!-- Website visit statistics - no personal information is collected! -->
+<script type="text/javascript">
+var sc_project=11325211;
+var sc_invisible=1;
+var sc_security="fd9f0659";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="web stats"
+href="http://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="//c.statcounter.com/11325211/0/fd9f0659/1/" alt="web
+stats"></a></div></noscript>
+
+<!-- JavaScript for the test itself -->
+<script>
+    var max_econ, max_dipl, max_govt, max_scty; // Max possible scores
+    max_econ = max_dipl = max_govt = max_scty = 0;
+    let econ_array = new Array(questions.length);
+    let dipl_array = new Array(questions.length);
+    let govt_array = new Array(questions.length);
+    let scty_array = new Array(questions.length);
+    var qn = 0; // Question number
+    init_question();
+    for (var i = 0; i < questions.length; i++) {
+        max_econ += Math.abs(questions[i].effect.econ)
+        max_dipl += Math.abs(questions[i].effect.dipl)
+        max_govt += Math.abs(questions[i].effect.govt)
+        max_scty += Math.abs(questions[i].effect.scty)
+    }
+    function init_question() {
+        document.getElementById("question-text").innerHTML = questions[qn].question;
+        document.getElementById("question-number").innerHTML = "Question " + (qn + 1) + " of " + (questions.length);
+        if (qn == 0) {
+            document.getElementById("back_button").style.display = 'none';
+            document.getElementById("back_button_off").style.display = 'block';
+        } else {
+            document.getElementById("back_button").style.display = 'block';
+            document.getElementById("back_button_off").style.display = 'none';
+        }
+
+    }
+
+    function next_question(mult) {
+        econ_array[qn] = mult*questions[qn].effect.econ
+        dipl_array[qn] = mult*questions[qn].effect.dipl
+        govt_array[qn] = mult*questions[qn].effect.govt
+        scty_array[qn] = mult*questions[qn].effect.scty
+        qn++;
+        if (qn < questions.length) {
+            init_question();
+        } else {
+            results();
+        }
+    }
+
+    function prev_question() {
+        if (qn == 0) {
+            return;
+        }
+        qn--;
+        init_question();
+    }
+
+    function calc_score(score,max) {
+        return (100*(max+score)/(2*max)).toFixed(1)
+    }
+
+    function results() {
+        let final_econ = econ_array.reduce((a, b) => a + b, 0)
+        let final_dipl = dipl_array.reduce((a, b) => a + b, 0)
+        let final_govt = govt_array.reduce((a, b) => a + b, 0)
+        let final_scty = scty_array.reduce((a, b) => a + b, 0)
+        location.href = `results.html`
+            + `?e=${calc_score(final_econ,max_econ)}`
+            + `&d=${calc_score(final_dipl,max_dipl)}`
+            + `&g=${calc_score(final_govt,max_govt)}`
+            + `&s=${calc_score(final_scty,max_scty)}`
+    }
+</script>
+</body>
