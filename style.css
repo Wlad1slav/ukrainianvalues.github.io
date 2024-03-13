@@ -225,46 +225,63 @@ div.text-wrapper {
     color: #222222;
     display: inline-block;
 }
+
+/* ЗРАДА */
 div.equality {
-    background-color: #f44336;
+    background-color: #5E0F3F;
     text-align: left;
     border-right-style: solid;
 }
+
+/* ПЕРЕМОГА */
 div.wealth {
-    background-color: #00897b;
+    background-color: #00B03E;
     text-align: right;
     border-left-style: solid;
 }
+
+/* ЄВРОАТЛАНТІЗМ */
 div.liberty {
     background-color: #ffeb3b;
     text-align: left;
     border-right-style: solid;
 }
+
+/* САМОСТІЙНІСТЬ */
 div.authority {
     background-color: #3f51b5;
     text-align: right;
     border-left-style: solid;
 }
+
+/* УКРАЇНСТВО */
 div.peace {
     background-color: #03a9f4;
     text-align: right;
     border-left-style: solid;
 }
+
+/* РУСОФІЛІЯ */
 div.might {
     background-color: #ff9800;
     text-align: left;
     border-right-style: solid;
 }
+
+/* ДЕРЖАВНА */
 div.progress {
     background-color: #9c27b0;
     text-align: right;
     border-left-style: solid;
 }
+
+/* НЕМАЄ РІЗНИЦЯ */
 div.tradition {
     background-color: #8bc34a;
     text-align: left;
     border-right-style: solid;
 }
+
 span.weight-300 {
     font-weight: 300;
 }
@@ -282,4 +299,11 @@ span.weight-300 {
     margin: 8pt;
     margin-left: auto;
     margin-right: auto;
+}
+
+/* ukranianvalues custom styles */
+@media (max-width: 936px) {
+    h1 {
+        font-size: 50pt;
+    }
 }
