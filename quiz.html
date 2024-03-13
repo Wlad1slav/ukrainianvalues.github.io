@@ -17,17 +17,17 @@
 <script type="application/javascript"
         src="questions.js">
 </script>
-<h1>8values</h1>
+<h1>Ukranianvalues</h1>
 <hr>
-<h2 style="text-align:center;" id="question-number">Loading...</h2>
+<h2 style="text-align:center;" id="question-number">Завантаження...</h2>
 <p class="question" id="question-text"></p>
-<button class="button stronglyAgree" onclick="next_question( 1.0)">Strongly Agree</button> <br>
-<button class="button agree" onclick="next_question( 0.5)">Agree</button> <br>
-<button class="button neutral" onclick="next_question( 0.0)">Neutral/Unsure</button> <br>
-<button class="button disagree" onclick="next_question(-0.5)">Disagree</button> <br>
-<button class="button stronglyDisagree" onclick="next_question(-1.0)">Strongly Disagree</button> <br>
-<button class="small_button" onclick="prev_question()" id="back_button">Back</button>
-<button class="small_button_off" id="back_button_off">Back</button><br>
+<button class="button stronglyAgree" onclick="next_question( 1.0)">Повністю Згодний</button> <br>
+<button class="button agree" onclick="next_question( 0.5)">Згодний</button> <br>
+<button class="button neutral" onclick="next_question( 0.0)">Нейтрально/Невпевнений</button> <br>
+<button class="button disagree" onclick="next_question(-0.5)">Незгодний</button> <br>
+<button class="button stronglyDisagree" onclick="next_question(-1.0)">Повністю Незгодний</button> <br>
+<button class="small_button" onclick="prev_question()" id="back_button">Назад</button>
+<button class="small_button_off" id="back_button_off">Назад</button><br>
 
 <!-- Website visit statistics - no personal information is collected! -->
 <script type="text/javascript">
@@ -64,7 +64,7 @@ stats"></a></div></noscript>
     }
     function init_question() {
         document.getElementById("question-text").innerHTML = questions[qn].question;
-        document.getElementById("question-number").innerHTML = "Question " + (qn + 1) + " of " + (questions.length);
+        document.getElementById("question-number").innerHTML = "Питання " + (qn + 1) + " з " + (questions.length);
         if (qn == 0) {
             document.getElementById("back_button").style.display = 'none';
             document.getElementById("back_button_off").style.display = 'block';
