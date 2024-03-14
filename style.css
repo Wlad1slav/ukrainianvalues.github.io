@@ -1,3 +1,22 @@
+:root {
+
+    /* Політика */
+    --zrada: #9f3674; /* ЗРАДА */
+    --peremoha: #00B03E; /* ПЕРЕМОГА */
+
+    /* Вплив */
+    --pedophilic: #cb4242; /* РУСОФІЛІЯ */
+    --nationalism: #3f51b5; /* УКРАЇНСТВО */
+
+    /* Дипломатія */
+    --euroatlantism: #f8d300; /* ЄВРОАТЛАНТІЗМ */
+    --sovereignty: #03a9f4; /* САМОСТІЙНІСТЬ */
+
+    /* МОВА */
+    --state-language: #b76e00; /* ДЕРЖАВНА */
+    --not-matter: #8bc34a; /* НЕМАЄ ЗНАЧЕННЯ */
+}
+
 html {
     background-color: #bbbbbb;
     padding: 0px;
@@ -228,56 +247,56 @@ div.text-wrapper {
 
 /* ЗРАДА */
 div.equality {
-    background-color: #5E0F3F;
+    background-color: var(--zrada);
     text-align: left;
     border-right-style: solid;
 }
 
 /* ПЕРЕМОГА */
 div.wealth {
-    background-color: #00B03E;
+    background-color: var(--peremoha);
     text-align: right;
     border-left-style: solid;
 }
 
 /* ЄВРОАТЛАНТІЗМ */
 div.liberty {
-    background-color: #ffeb3b;
+    background-color: var(--euroatlantism);
     text-align: left;
     border-right-style: solid;
 }
 
 /* САМОСТІЙНІСТЬ */
 div.authority {
-    background-color: #3f51b5;
+    background-color: var(--sovereignty);
     text-align: right;
     border-left-style: solid;
 }
 
 /* УКРАЇНСТВО */
 div.peace {
-    background-color: #03a9f4;
+    background-color: var(--nationalism);
     text-align: right;
     border-left-style: solid;
 }
 
 /* РУСОФІЛІЯ */
 div.might {
-    background-color: #ff9800;
+    background-color: var(--pedophilic);
     text-align: left;
     border-right-style: solid;
 }
 
 /* ДЕРЖАВНА */
 div.progress {
-    background-color: #9c27b0;
+    background-color: var(--state-language);
     text-align: right;
     border-left-style: solid;
 }
 
 /* НЕМАЄ РІЗНИЦЯ */
 div.tradition {
-    background-color: #8bc34a;
+    background-color: var(--not-matter);
     text-align: left;
     border-right-style: solid;
 }
