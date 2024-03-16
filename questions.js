@@ -453,3 +453,5 @@ questions = [
         },
     },
 ];
+questions.sort(() => Math.random() - 0.5);
+console.log('1231231')
