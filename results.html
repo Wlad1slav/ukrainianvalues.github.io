@@ -133,8 +133,10 @@
     
         function createImage(src, x, y, w, h) {
             img = new Image ()
+            // Request CORS permission
+            img.crossOrigin = "anonymous"; // This line is key to avoid the tainted canvas issue
             img.src = src
-            img.onLoad = function() {
+            img.onload = function() {
                 ctx.drawImage(img, x, y, w, h)
             }
         }
