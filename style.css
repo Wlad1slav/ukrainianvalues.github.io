@@ -5,8 +5,8 @@
     --peremoha: #00B03E; /* ПЕРЕМОГА */
 
     /* Вплив */
-    --nationalism: #cb4242; /* РУСОФІЛІЯ */
-    --pedophilic: #3f51b5; /* УКРАЇНСТВО */
+    --pedophilic: #cb4242; /* РУСОФІЛІЯ */
+    --nationalism: #3f51b5; /* УКРАЇНСТВО */
 
     /* Дипломатія */
     --euroatlantism: #f8d300; /* ЄВРОАТЛАНТИЗМ */
@@ -273,16 +273,16 @@ div.authority {
     border-left-style: solid;
 }
 
-/* УКРАЇНСТВО */
+/* РУСОФІЛІЯ */
 div.peace {
-    background-color: var(--nationalism);
+    background-color: var(--pedophilic);
     text-align: right;
     border-left-style: solid;
 }
 
-/* РУСОФІЛІЯ */
+/* УКРАЇНСТВО */
 div.might {
-    background-color: var(--pedophilic);
+    background-color: var(--nationalism);
     text-align: left;
     border-right-style: solid;
 }
