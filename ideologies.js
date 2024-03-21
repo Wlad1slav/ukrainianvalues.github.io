@@ -165,7 +165,7 @@
 */
 
 
-ideologies = [
+const ideologies = [
     {
         "name": "Ждун", // 1 1 1 1
         "stats": {
