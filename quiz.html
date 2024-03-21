@@ -14,48 +14,41 @@
 <hr>
 <h2 style="text-align:center;" id="question-number">Завантаження...</h2>
 <p class="question" id="question-text"></p>
-<button class="button stronglyAgree" onclick="next_question( 1.0)">Повністю погоджуюся</button> <br>
-<button class="button agree" onclick="next_question( 0.5)">Погоджуюся</button> <br>
-<button class="button neutral" onclick="next_question( 0.0)">Нейтрально</button> <br>
+<button class="button stronglyAgree" onclick="next_question(1)">Повністю погоджуюся</button> <br>
+<button class="button agree" onclick="next_question(0.5)">Погоджуюся</button> <br>
+<button class="button neutral" onclick="next_question(0)">Нейтрально</button> <br>
 <button class="button disagree" onclick="next_question(-0.5)">Не погоджуюся</button> <br>
-<button class="button stronglyDisagree" onclick="next_question(-1.0)">Зовсім не погоджуюся</button> <br>
+<button class="button stronglyDisagree" onclick="next_question(-1)">Зовсім не погоджуюся</button> <br>
 <button class="small_button" onclick="prev_question()" id="back_button">Назад</button>
 <button class="small_button_off" id="back_button_off">Назад</button><br>
 
 <!-- JavaScript for the test itself -->
 <script>
-    var max_econ, max_dipl, max_govt, max_scty; // Max possible scores
-    max_econ = max_dipl = max_govt = max_scty = 0;
-    let econ_array = new Array(questions.length);
-    let dipl_array = new Array(questions.length);
-    let govt_array = new Array(questions.length);
-    let scty_array = new Array(questions.length);
-    var qn = 0; // Question number
+    const econ_array = [];
+    const dipl_array = [];
+    const govt_array = [];
+    const scty_array = [];
+    let qn = 0; // Question number
+
     init_question();
-    for (var i = 0; i < questions.length; i++) {
-        max_econ += Math.abs(questions[i].effect.econ)
-        max_dipl += Math.abs(questions[i].effect.dipl)
-        max_govt += Math.abs(questions[i].effect.govt)
-        max_scty += Math.abs(questions[i].effect.scty)
-    }
+
     function init_question() {
         document.getElementById("question-text").innerHTML = questions[qn].question;
         document.getElementById("question-number").innerHTML = "Питання " + (qn + 1) + " з " + (questions.length);
-        if (qn == 0) {
+        if (qn === 0) {
             document.getElementById("back_button").style.display = 'none';
             document.getElementById("back_button_off").style.display = 'block';
         } else {
             document.getElementById("back_button").style.display = 'block';
             document.getElementById("back_button_off").style.display = 'none';
         }
-
     }
 
     function next_question(mult) {
-        econ_array[qn] = mult*questions[qn].effect.econ
-        dipl_array[qn] = mult*questions[qn].effect.dipl
-        govt_array[qn] = mult*questions[qn].effect.govt
-        scty_array[qn] = mult*questions[qn].effect.scty
+        econ_array[qn] = mult * questions[qn].effect.econ
+        dipl_array[qn] = mult * questions[qn].effect.dipl
+        govt_array[qn] = mult * questions[qn].effect.govt
+        scty_array[qn] = mult * questions[qn].effect.scty
         qn++;
         if (qn < questions.length) {
             init_question();
@@ -65,27 +58,23 @@
     }
 
     function prev_question() {
-        if (qn == 0) {
-            return;
-        }
+        if (qn == 0) return;
         qn--;
         init_question();
     }
 
-    function calc_score(score,max) {
-        return (100*(max+score)/(2*max)).toFixed(1)
+    function calc_score(param, scoreArray) {
+        const finalScore = scoreArray.reduce((a, b) => a + b, 0);
+        const maxScore = questions.reduce((acc, question) => acc + Math.abs(question.effect[param]), 0);
+        return (100 * (finalScore + maxScore) / (2 * maxScore)).toFixed(1)
     }
 
     function results() {
-        let final_econ = econ_array.reduce((a, b) => a + b, 0)
-        let final_dipl = dipl_array.reduce((a, b) => a + b, 0)
-        let final_govt = govt_array.reduce((a, b) => a + b, 0)
-        let final_scty = scty_array.reduce((a, b) => a + b, 0)
         location.href = `results.html`
-            + `?e=${calc_score(final_econ,max_econ)}`
-            + `&d=${calc_score(final_dipl,max_dipl)}`
-            + `&g=${calc_score(final_govt,max_govt)}`
-            + `&s=${calc_score(final_scty,max_scty)}`
+            + `?e=${calc_score('econ', econ_array)}`
+            + `&d=${calc_score('dipl', dipl_array)}`
+            + `&g=${calc_score('govt', govt_array)}`
+            + `&s=${calc_score('scty', scty_array)}`
     }
 </script>
 </body>
