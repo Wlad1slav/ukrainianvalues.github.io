@@ -65,8 +65,8 @@
 
     function calc_score(param, scoreArray) {
         const finalScore = scoreArray.reduce((a, b) => a + b, 0);
-        const maxScore = questions.reduce((acc, question) => acc + Math.abs(question.effect[param]), 0);
-        return (100 * (finalScore + maxScore) / (2 * maxScore)).toFixed(1)
+        const maxImposibleScore = questions.reduce((acc, question) => acc + Math.abs(question.effect[param]), 0);
+        return (100 * (finalScore + maxImposibleScore) / (2 * maxImposibleScore)).toFixed(1)
     }
 
     function results() {
