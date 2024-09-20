@@ -1,7 +1,7 @@
 <head>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Roboto:400,700" rel="stylesheet">
     <link href='style.css' rel='stylesheet' type='text/css'>
-    <title>Ukranianvalues Реузльтати</title>
+    <title>Ukrainianvalues Реузльтати</title>
     <link rel="icon" type="x-icon" href="icon.png">
     <link rel="shortcut icon" type="x-icon" href="icon.png">
     <meta charset="utf-8">
@@ -12,13 +12,13 @@
     <script type="application/javascript"
             src="ideologies.js">
     </script>
-    
+
     <body>
-    <h1>Ukranianvalues</h1>
+    <h1>Ukrainianvalues</h1>
     <hr>
-    
+
     <h1>Результат</h1>
-    
+
     <h2>Політика: <span class="weight-300" id="economic-label"></span></h2>
     <div class="axis">
         <img id="img-equality" src="value_images/equality.svg" height="128pt"/>
@@ -65,7 +65,7 @@
                }
                return(NaN);
         }
-    
+
         function setBarValue(name, value) {
             innerel = document.getElementById(name)
             outerel = document.getElementById("bar-" + name)
@@ -75,7 +75,7 @@
                 innerel.style.visibility = "hidden"
             }
         }
-    
+
         econArray = ["Тотальна зрада","Кранє невдоволення","Песимістичні очікування","Невпевнений","Оптимістичні очікування","Впевненість в перемозі","Абсолютна перемога"]
         diplArray = ["Максимальне росіянство","Русофілія","Схильність до російського","Помірність","Україноцентризм","Русофобія","Нетерплячість російського"]
         govtArray = ["Про-західний фанатизм","Впевнене інтегрування","Зближення з Заходом","Баланс","Скептичне ставлення","Свій підхід","Окрема Україна"]
@@ -92,7 +92,7 @@
             if (val >= 0) { return ary[6] } else
                 {return ""}
         }
-    
+
         equality  = getQueryVariable("e")
         peace     = getQueryVariable("d")
         liberty   = getQueryVariable("g")
@@ -101,7 +101,7 @@
         might     = (100 - peace   ).toFixed(1)
         authority = (100 - liberty ).toFixed(1)
         tradition = (100 - progress).toFixed(1)
-    
+
         setBarValue("equality", equality)
         setBarValue("wealth", wealth)
         setBarValue("peace", peace)
@@ -110,12 +110,12 @@
         setBarValue("authority", authority)
         setBarValue("progress", progress)
         setBarValue("tradition", tradition)
-    
+
         document.getElementById("economic-label").innerHTML = setLabel(equality, econArray)
         document.getElementById("diplomatic-label").innerHTML = setLabel(peace, diplArray)
         document.getElementById("state-label").innerHTML = setLabel(liberty, govtArray)
         document.getElementById("society-label").innerHTML = setLabel(progress, sctyArray)
-    
+
         ideology = ""
         ideodist = Infinity
         for (var i = 0; i < ideologies.length; i++) {
@@ -130,7 +130,7 @@
             }
         }
         document.getElementById("ideology-label").innerHTML = ideology
-    
+
         function createImage(src, x, y, w, h) {
             img = new Image ()
             // Request CORS permission
@@ -140,7 +140,7 @@
                 ctx.drawImage(img, x, y, w, h)
             }
         }
-    
+
         window.onload = function() {
             var c = document.createElement("canvas")
             var ctx = c.getContext("2d")
@@ -148,7 +148,7 @@
             c.height = 650;
             ctx.fillStyle = "#EEEEEE"
             ctx.fillRect(0,0,800,650);
-    
+
             img = document.getElementById("img-equality")
             ctx.drawImage(img, 20, 170, 100, 100);
             img = document.getElementById("img-wealth")
@@ -165,7 +165,7 @@
             ctx.drawImage(img, 20, 530, 100, 100)
             img = document.getElementById("img-progress")
             ctx.drawImage(img, 680, 530, 100, 100)
-    
+
             ctx.fillStyle="#222222"
             ctx.fillRect(120, 180, 560, 80)
             ctx.fillRect(120, 300, 560, 80)
@@ -193,7 +193,7 @@
             ctx.fillText("Ukranianvalues", 20, 90)
             ctx.font="50px Montserrat"
             ctx.fillText(ideology, 20, 140)
-    
+
             ctx.textAlign="left"
             if (equality  > 30) {ctx.fillText(equality + "%", 130, 237.5)}
             if (might     > 30) {ctx.fillText(might + "%", 130, 357.5)}
@@ -204,7 +204,7 @@
             if (peace     > 30) {ctx.fillText(peace + "%", 670, 357.5)}
             if (authority > 30) {ctx.fillText(authority + "%", 670, 477.5)}
             if (progress  > 30) {ctx.fillText(progress + "%", 670, 597.5)}
-    
+
             ctx.font="300 30px Montserrat"
             ctx.fillText("wlad1slav.github.io/ukrainianvalues.github.io", 780, 40)
             ctx.fillText(version, 780, 90)
@@ -213,7 +213,7 @@
             ctx.fillText("Вплив: " + document.getElementById("diplomatic-label").innerHTML, 400, 295)
             ctx.fillText("Дипломатія: " + document.getElementById("state-label").innerHTML, 400, 415)
             ctx.fillText("Мова: " + document.getElementById("society-label").innerHTML, 400, 535)
-    
+
             document.getElementById("banner").src = c.toDataURL();
         }
         </script>
